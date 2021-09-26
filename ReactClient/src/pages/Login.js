@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -35,7 +33,6 @@ const theme = createTheme();
  function LoginComp(props) {
 const classes = useStyles();
     const handleSubmit = (event) => {
-
     event.preventDefault();
     const data = new FormData(event.currentTarget);
      authSrv.login({
@@ -45,7 +42,11 @@ const classes = useStyles();
         if(resp.status===200)
         {
             let token =resp.data.token;
+            let username =resp.data.username;
+            let role =resp.data.role;
             authSrv.saveToken(token);
+            authSrv.saveUserName(username);
+            authSrv.saveRole(role);
             props.history.push('/menu');
         }
     }).catch(function (error) {

@@ -33,4 +33,5 @@ exports.passwordUpdate=async(userid,obj)=>
      return  await usersDBDAL.updateUserPwd(userid,obj.password);
     
 }
+
 //this.findUserIdForUserName("anna");

@@ -12,8 +12,7 @@ try {
     if (isUserDataVerified) 
     {
         const userId = await loginBL.findUserIdForUserName(username);
-       
-       
+        const isAdmin = await usersBL.isAdminById(userId);
        //Get the real secret key from db or envinroment variable..
         const RSA_PRIVATE_KEY = 'somekey';
 
@@ -21,7 +20,7 @@ try {
                              RSA_PRIVATE_KEY,
                             {expiresIn: 7200  } // expires in 2 hours
                             );
-        res.status(200).send({ token: tokenData });
+        res.status(200).send({ token: tokenData,username:username,role:isAdmin });
     }
     else
     {

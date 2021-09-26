@@ -120,7 +120,7 @@ exports.deleteUser=async(id)=>
    let indexOfId=ids.indexOf(id);  
    if (indexOfId > -1) {
       allusers.users.splice(indexOfId,1);
-   }
+}
    usersJsonDAL.createUser(allusers);
 
    let allusersPermissions=await permissionsJsonDAL.getUsersPermissions();
@@ -157,8 +157,8 @@ exports.deleteUser=async(id)=>
   * @param {*} id  A unique number stored in usersDB for each user,
  *  and also used as a key that connects 3 sources of Data.
   * @returns  BOOLEAN value
-  */
- async function isAdminById(id){
+  * */
+ exports.isAdminById=async(id)=>{
     let user=await usersDBDAL.getUserById(id);
     return  user.isAdmin; 
  }

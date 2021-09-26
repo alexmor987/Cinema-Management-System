@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import authSrv from '../services/auth';
 import {
     Divider,
   Drawer,
@@ -23,7 +24,7 @@ const useStyles = makeStyles(()=>({
     }
 }));
 
-function DrawerComponent() {
+function DrawerComponent(props) {
     const classes = useStyles();
   const [openDrawer, setOpenDrawer] = useState(false);
   return (
@@ -35,25 +36,31 @@ function DrawerComponent() {
         <List>
         <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <Link to="/" className={classes.link}>Home</Link>
+              <Link onClick={()=>authSrv.logout()} to="/" className={classes.link}>LogOut</Link>
             </ListItemText>
           </ListItem>
           <Divider/>
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <Link to="/about" className={classes.link}>About</Link>
+            <Link to={props.url+"/movies"} className={classes.link}>
+              Movies
+            </Link>
             </ListItemText>
           </ListItem>
           <Divider/>
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <Link to="/contact" className={classes.link}>Contact</Link>
+            <Link to={props.url+"/subscriptions"} className={classes.link}>
+            Subscriptions
+            </Link>
             </ListItemText>
           </ListItem>
           <Divider/>
           <ListItem onClick={() => setOpenDrawer(false)}>
             <ListItemText>
-              <Link to="/about" className={classes.link}>Faq</Link>
+            <Link to={props.url+"/usersmanagement"} className={classes.link}>
+            Users Management
+            </Link>
             </ListItemText>
           </ListItem>
           <Divider/>

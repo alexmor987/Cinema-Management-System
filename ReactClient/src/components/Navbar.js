@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -10,6 +11,8 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import DrawerComponent from "./Drawer";
+import authSrv from '../services/auth';
+
 
 const useStyles = makeStyles((theme) => ({
   navlinks: {
@@ -17,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
   },
   logo: {
+    color:"pink",
     flexGrow: "1",
     cursor: "pointer",
   },
@@ -32,35 +36,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Navbar() {
+function Navbar(props) {
+  const [isAdmin,setIsAdmin] = useState(false);
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+  useEffect(()=>{
+    let role=authSrv.getRole();
+    setIsAdmin(role==="true"?true:false);
+    },[])
   return (
     <AppBar position="static">
       <CssBaseline />
       <Toolbar>
-        <Typography variant="h4" className={classes.logo}>
-          Navbar
-          
+        <Typography variant="h7" className={classes.logo}>
+        Connected with: {authSrv.getUserName()}
+    
         </Typography>
         {isMobile ? (
-          <DrawerComponent />
+          <DrawerComponent url={props.url} />
         ) : (
           <div className={classes.navlinks}>
-            <Link to="/" className={classes.link}>
-              Home
+            <Link  onClick={()=>authSrv.logout()} to="/" className={classes.link}>
+              LogOut
             </Link>
-            <Link to="/about" className={classes.link}>
-              About
+            <Link to={props.url+"/movies"} className={classes.link}>
+              Movies
             </Link>
-            <Link to="/contact" className={classes.link}>
-              Contact
+            
+            <Link to={props.url+"/subscriptions"} className={classes.link}>
+            Subscriptions
             </Link>
-            <Link to="/faq" className={classes.link}>
-              FAQ
-            </Link>
+            {isAdmin &&<Link to={props.url+"/usersmanagement"} className={classes.link}>
+            Users Management
+            </Link>}
           </div>
         )}
       </Toolbar>
