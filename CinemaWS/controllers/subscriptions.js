@@ -2,20 +2,15 @@ var express = require('express');
 var router = express.Router();
 const subscriptionsBL= require('../models/subscriptionsBL');
 const membersBL= require('../models/membersBL');
+const auth = require("../middleware/auth");
 
 
-router.get('/',async function(req, res, next) {
-  if(req.session.isAuthenticated)
-  {
+router.get('/',auth,async function(req, res, next) {
        let allMembers=await membersBL.getAllMembersWithWatchingMovies();
-    
-      res.render('subscriptions',{data:allMembers,isAdmin:req.session.isAdmin,username:req.session.username,msg:"",pageAddMovie:false});
-   }
-  else
-  {
-      res.redirect("/login");
-  }
+       res.status(200).send({ members: allMembers});
 });
+
+
 router.get('/deleteMember/:id',async function(req, res, next) {
   if(req.session.isAuthenticated)
   {
@@ -28,16 +23,10 @@ router.get('/deleteMember/:id',async function(req, res, next) {
       res.redirect("/login");
   }
 });
-router.get('/searchMember/:id',async function(req, res, next) {
-  if(req.session.isAuthenticated)
-  {
+router.get('/searchMember/:id',auth,async function(req, res, next) {
      let result=  await membersBL.searchMemberById(req.params.id);
-       res.render('subscriptions',{data:result,isAdmin:req.session.isAdmin,username:req.session.username,msg:"",pageAddMovie:false});
-   }
-  else
-  {
-      res.redirect("/login");
-  }
+     res.status(200).send({ member: result});
+
 });
 router.post('/updateMember',async function(req, res, next) {
   if(req.session.isAuthenticated)

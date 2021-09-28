@@ -50,7 +50,7 @@ function Navbar(props) {
     <AppBar position="static">
       <CssBaseline />
       <Toolbar>
-        <Typography variant="h7" className={classes.logo}>
+        <Typography variant="h6" className={classes.logo}>
         Connected with: {authSrv.getUserName()}
     
         </Typography>

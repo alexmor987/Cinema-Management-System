@@ -1,18 +1,12 @@
 var express = require('express');
 var router = express.Router();
 const usersBL= require('../models/usersBL');
+const auth = require("../middleware/auth");
 
-router.get('/',async function(req, res, next) {
-  if(req.session.isAuthenticated)
-  {
-     let allUsersData=await  usersBL.getAllUsers();
-      res.render('manageUsers',{isAdmin:req.session.isAdmin,username:req.session.username,data:allUsersData});
-   }
-  else
-  {
-      res.redirect("/login");
-  }
-  
+
+router.get('/',auth,async function(req, res, next) {
+      let allUsersData=await usersBL.getAllUsers();
+      res.status(200).send({ users: allUsersData});
 });
 router.get('/updateUser/:id',async function(req, res, next) {
   if(req.session.isAuthenticated)

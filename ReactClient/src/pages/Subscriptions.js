@@ -1,17 +1,41 @@
-import { useEffect } from "react";
-import authSrv from '../services/auth';
+import { useEffect ,useState} from "react";
+
+import MemberComp from "./Member";
+import AllMembersComp from "./AllMembers";
+import AddMemberComp from "./AddMember";
+import {Switch, Route,useRouteMatch} from 'react-router-dom';
+import NavTabs from "../components/NavTabs";
+import MoviesComp from "../components/Movies";
 
 function SubscriptionsComp(props) {
-useEffect(()=>{
-    let token=authSrv.getToken();
-    if(token===undefined){
-    props.history.push("/");
-}
-    },[])
+  let { path, url} = useRouteMatch();
+  const [tabsUrl] = useState({firstTabUrl:"/allmembers",secondTabUrl:"/addmemeber"});
+  const [tabsName] = useState({firstTabName:"All Members",secondTabName:"Add Member"});
+
   return (
     <div>
-      <h3>Subscriptions</h3>
-  </div>
+    <NavTabs url={url} tabsUrl={tabsUrl} tabsName={tabsName}/>
+ <Switch>
+       
+        <Route exact path={ path + "/" }>
+           <AllMembersComp />
+       </Route>
+    
+       <Route  path={ path + tabsUrl.firstTabUrl }>
+           <AllMembersComp />
+       </Route>
+        
+       <Route path={ path + tabsUrl.secondTabUrl }>
+           <AddMemberComp />
+       </Route>
+       <Route path="menu/movies/:id">
+              <MoviesComp />
+          </Route>
+       <Route  path={ path + "/:id" }>
+           <MemberComp />
+       </Route>
+ </Switch>
+ </div>
   );
 }
 

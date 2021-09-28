@@ -11,9 +11,11 @@ exports.getAllUsers=async()=>{
     let allUsersFromjson=await usersJsonDAL.getUsers();
 
     let allUsers=allUsersFromjson.users.map(async (x)=>{
-       return {userid:x.id,fullname:x.Fname+" "+x.Lname,
+       return {
+                    userid:x.id,
+                    fullname:x.Fname+" "+x.Lname,
                     username:await(getUsernameById(x.id)),
-                    isAdmin:await (isAdminById(x.id)),
+                    isAdmin:await (this.isAdminById(x.id)),
                     sessionTimeOut:x.SessionTimeOut,
                     permissions:await (getPermissionsById(x.id))
                };
@@ -158,7 +160,7 @@ exports.deleteUser=async(id)=>
  *  and also used as a key that connects 3 sources of Data.
   * @returns  BOOLEAN value
   * */
- exports.isAdminById=async(id)=>{
+  exports.isAdminById=async(id)=>{
     let user=await usersDBDAL.getUserById(id);
     return  user.isAdmin; 
  }

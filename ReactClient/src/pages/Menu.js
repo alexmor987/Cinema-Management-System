@@ -3,10 +3,11 @@ import authSrv from '../services/auth';
 import Navbar from "../components/Navbar";
 import LoginComp from '../pages/Login';
 import MoviesComp from '../pages/Movies';
-import SubscriptionsComp from '../pages/Subscriptions';
+import SubscriptionsComp from './Subscriptions';
 import UsersManagementComp from '../pages/UsersManagement';
 import {Switch, Route } from "react-router-dom";
 import {useRouteMatch} from 'react-router-dom';
+
 function MenuComp(props) {
   
   let { path, url} = useRouteMatch()

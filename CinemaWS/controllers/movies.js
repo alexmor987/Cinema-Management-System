@@ -42,21 +42,7 @@ router.post('/addMovie',async function(req, res, next) {
   }
   
 });
-/* POST- Search Movies Page. */
-router.post('/searchMovies',async function(req, res, next) {
-  if(req.session.isAuthenticated) {
-      let resultOfSearchMovies=await moviesBL.searchMovies(req.body);
-      let generslist=await  moviesBL.getGenersList();
-      res.render('movies',{isAdmin:req.session.isAdmin,username:req.session.username,
-        data:resultOfSearchMovies,msg:"No data found!",pageAddMovie:false,generslist:generslist});
-      
-    }
-  else
-    {
-    res.redirect('/login');
-    }
-  
-});
+
 router.get('/searchMovies/:id',async function(req, res, next) {
   if(req.session.isAuthenticated) {
       let result=await moviesBL.searchMovieById(req.params.id);
