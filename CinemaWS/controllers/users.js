@@ -5,47 +5,45 @@ const auth = require("../middleware/auth");
 
 
 router.get('/',auth,async function(req, res, next) {
-      let allUsersData=await usersBL.getAllUsers();
-      res.status(200).send({ users: allUsersData});
+  try {
+    let allUsersData=await usersBL.getAllUsers();
+    res.status(200).send({ users: allUsersData});
+  } catch (error) {
+    res.status(404).send({ error: error.message});//Error 
+  }   
 });
-router.get('/updateUser/:id',async function(req, res, next) {
-  if(req.session.isAuthenticated)
-  {
-     let userData=await  usersBL.getUserById(req.params.id);
-     return res.json(userData);
-   }
-  else
-  {
-      res.redirect("/login");
-  }
-  
+router.get('/updateUser/:id',auth,async function(req, res, next) {
+  try {
+    let userData=await  usersBL.getUserById(req.params.id);
+    res.status(200).send({ user: userData});
+  } catch (error) {
+    res.status(404).send({ error: error.message});//Error 
+  }  
 });
-router.post('/updateUser',async function(req, res, next) {
-    await  usersBL.updateUser(req.body);
-    res.redirect("/users");
+router.post('/updateUser',auth,async function(req, res, next) {
+  try {
+    await usersBL.updateUser(req.body);
+    res.status(200);
+  } catch (error) {
+    res.status(404).send({ error: error.message});//Error 
+  } 
 });
 
-router.get('/deleteUser/:id',async function(req, res, next) {
-  if(req.session.isAuthenticated){
+router.get('/deleteUser/:id',auth,async function(req, res, next) {
+  try {
       await usersBL.deleteUser(req.params.id);
-      res.redirect('/users');
-    }
-    else{
-      res.redirect("/login");
+      res.status(200);
+    } catch (error) {
+      res.status(404).send({ error: error.message});//Error 
     }
   });
-router.post('/addUser',async function(req, res, next) {
+router.post('/addUser',auth,async function(req, res, next) {
+  try {
       await usersBL.createUser(req.body);
-      res.redirect('/users');
-  });
-router.get('/addUser',async function(req, res, next) {
-  if(req.session.isAuthenticated)
-  {
-   res.render('addUser',{isAdmin:req.session.isAdmin,username:req.session.username}); 
-  }
-  else{
-    res.redirect('/login')
-  }
+      res.status(200);
+    } catch (error) {
+      res.status(404).send({ error: error.message});//Error 
+    }
   });
 
 module.exports = router;

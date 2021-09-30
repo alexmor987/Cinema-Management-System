@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react";
 import utils from '../utils/utils';
-import CardComp from '../components/CardMovie';
+import CardMovieComp from '../components/CardMovie';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
@@ -34,17 +34,10 @@ try {
     let allmovies=resp.data.movies;
     setMovies(allmovies);
 } catch (error) {
-    console.log(error.message);
+  console.log(error.message);
 }
     },[])
     
-    useEffect(()=>{
-      let movie=movies.filter(movies => movies.movieId===id);
-      setMovies(movie);
-  
-          },[id])
-        
-
     const filteredMovies = search.length === 0 ? movies : 
     movies.filter(movies => movies.moviename.
                 toLowerCase().includes(search.toLowerCase()))
@@ -75,7 +68,7 @@ try {
         
              return  <Grid item key={index} xs={12} sm={6} md={5}>
                
-               <CardComp sx={{ height: '100%', display: 'flex', flexDirection: 'column' }} data={movieData}/>
+               <CardMovieComp sx={{ height: '100%', display: 'flex', flexDirection: 'column' }} data={movieData}/>
                </Grid>
                       })
           }

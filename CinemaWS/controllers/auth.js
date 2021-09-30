@@ -13,7 +13,7 @@ try {
     {
         const userId = await loginBL.findUserIdForUserName(username);
         const isAdmin = await usersBL.isAdminById(userId);
-       //Get the real secret key from db or envinroment variable..
+       //secret key 
         const RSA_PRIVATE_KEY = 'somekey';
 
         var tokenData = jwt.sign({ id: userId },
@@ -29,8 +29,6 @@ try {
 } catch (error) {
     res.status(500).send({ errorName : error.name,errorMessage:error.message});
 }
-    
-    
   });
 
   module.exports = router;

@@ -7,8 +7,10 @@ import CardHeader from '@mui/material/CardHeader';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import SubscriptionsComp from './Subscriptions';
+import utils from '../utils/utils';
 
-export default function CardComp(props) {
+export default function CardMovieComp(props) {
+  
   return (
     <Card sx={{ maxWidth: 345 }}>
         <CardHeader

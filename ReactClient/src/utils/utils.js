@@ -23,5 +23,12 @@ const getMemberById=(id)=>
 {
     return  axios.get('http://localhost:5000/api/subscriptions/searchMember/'+id);
 }
-
-export default {getMovies,getMembers,getUsers,getMemberById}
+const getMovieById=(id)=>
+{
+    return  axios.get('http://localhost:5000/api/movies/searchMovie/'+id);
+}
+const deleteMovieById=(id)=>
+{
+    return  axios.get('http://localhost:5000/api/movies/deleteMovie/'+id);
+}
+export default {getMovies,getMembers,getUsers,getMemberById,getMovieById,deleteMovieById}

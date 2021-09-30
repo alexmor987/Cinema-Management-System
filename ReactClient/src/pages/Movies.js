@@ -3,6 +3,7 @@ import authSrv from '../services/auth';
 import NavTabs from "../components/NavTabs";
 import AllMoviesComp from "../pages/AllMovies";
 import AddMovieComp from "../pages/AddMovie";
+import MovieComp from "../pages/Movie";
 import {Switch, Route,useRouteMatch} from 'react-router-dom';
 import SubscriptionsComp from "./Subscriptions";
 
@@ -32,7 +33,7 @@ function MoviesComp(props) {
               <AddMovieComp />
           </Route>
           <Route  path={ path + "/:id" }>
-           <AllMoviesComp />
+           <MovieComp />
        </Route>
     </Switch>
 

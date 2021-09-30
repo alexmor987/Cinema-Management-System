@@ -4,10 +4,8 @@ import CardMemberComp from '../components/CardMember';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';
-import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
-import SearchField from "react-search-field";
-import { makeStyles } from  "@material-ui/core";
+
 
 function AllMembersComp() {
     const [members, setMembers] = useState([]);
@@ -17,7 +15,6 @@ try {
 
     let resp= await utils.getMembers();
     let allmembers=resp.data.members;
-    console.log(allmembers);
     setMembers(allmembers);
 } catch (error) {
     console.log(error.message);

@@ -1,21 +1,23 @@
 import { useEffect,useState } from "react";
 import { useParams} from 'react-router-dom'
 import utils from '../utils/utils';
-import CardMemberComp from '../components/CardMember';
+import  CardMovieComp from '../components/CardMovie';
 import { ThemeProvider } from "@emotion/react";
 import Grid from '@mui/material/Grid';
 import { createTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 
-function MemberComp() {
-    const [member, setMember] = useState([]);
+function MovieComp() {
+    const [movie, setMovie] = useState([]);
     const theme = createTheme();
     let { id } = useParams()
 useEffect(async()=>{
 try { 
-    let resp= await utils.getMemberById(id);
-    setMember(resp.data.member);
+  
+    let resp= await utils.getMovieById(id);
+    console.log(resp.data.movie);
+    setMovie(resp.data.movie);
 } catch (error) {
     console.log(error.message);
 }
@@ -32,11 +34,11 @@ try {
         <Grid container spacing={4}>
        
         {
-           member.map((memberData,index)=>{
+           movie.map((movieData,index)=>{
       
            return  <Grid item key={index} xs={12} sm={6} md={5}>
              
-             <CardMemberComp sx={{ height: '100%', display: 'flex', flexDirection: 'column' }} data={memberData}/>
+            <CardMovieComp sx={{ height: '100%', display: 'flex', flexDirection: 'column' }} data={movieData}/>
              </Grid>
                     })
         }
@@ -48,5 +50,5 @@ try {
   );
 }
 
-export default MemberComp;
+export default MovieComp;
 
