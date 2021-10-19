@@ -54,10 +54,10 @@ exports.updateMovie=(id,obj)=>{
    {
       Movie.findByIdAndUpdate(id,
       {
-            Name: obj.Name,
-            Genres:obj.Genres,
-            Image:obj.Image,
-            Premiered:obj.Premiered
+            Name: obj.moviename,
+            Genres:obj.genres,
+            Image:obj.image,
+            Premiered:obj.premiered
       },(err)=>{
          if(err)reject(err);
          else resolve("Updated!");

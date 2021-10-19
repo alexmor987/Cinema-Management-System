@@ -1,5 +1,5 @@
 import { useEffect,useState } from "react";
-import utils from '../utils/utils';
+import utils from '../../utils/utils';
 
 function AllUsersComp(props) {
     const [users, setUsers] = useState([]);

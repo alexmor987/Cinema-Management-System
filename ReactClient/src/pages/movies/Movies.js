@@ -1,11 +1,10 @@
 import { useState } from "react";
-import authSrv from '../services/auth';
-import NavTabs from "../components/NavTabs";
-import AllMoviesComp from "../pages/AllMovies";
-import AddMovieComp from "../pages/AddMovie";
-import MovieComp from "../pages/Movie";
+import NavTabs from "../../components/NavTabs";
+import AllMoviesComp from "../movies/AllMovies";
+import AddMovieComp from "../movies/AddMovie";
+import MovieComp from "../movies/Movie";
 import {Switch, Route,useRouteMatch} from 'react-router-dom';
-import SubscriptionsComp from "./Subscriptions";
+import SubscriptionsComp from "../subscriptions/Subscriptions";
 
 
 function MoviesComp(props) {

@@ -93,8 +93,11 @@ exports.getGenersList=async ()=>{
       mySet.add(element);
     }
   });
- 
-  return mySet;
+ let arrGeners=[]
+  mySet.forEach(x=>{
+    arrGeners.push(x);
+  })
+  return arrGeners;
 }
 function isSameNames (x,y){
   
@@ -132,4 +135,4 @@ function findDateWatch(arrMovies,movieid){
    return arrDate[0].date
 
  }
-//this.searchMovieById('611ad0742d287441d433ce61');
+this.getGenersList();

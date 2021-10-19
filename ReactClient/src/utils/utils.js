@@ -31,4 +31,8 @@ const deleteMovieById=(id)=>
 {
     return  axios.get('http://localhost:5000/api/movies/deleteMovie/'+id);
 }
-export default {getMovies,getMembers,getUsers,getMemberById,getMovieById,deleteMovieById}
+const updateMovie=(obj)=>
+{
+    return  axios.post('http://localhost:5000/api/movies/updateMovie/',obj);
+}
+export default {updateMovie,getMovies,getMembers,getUsers,getMemberById,getMovieById,deleteMovieById}

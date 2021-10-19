@@ -1,11 +1,11 @@
 import { useEffect ,useState} from "react";
 
-import MemberComp from "./Member";
-import AllMembersComp from "./AllMembers";
-import AddMemberComp from "./AddMember";
+import MemberComp from "../subscriptions/Member";
+import AllMembersComp from "../subscriptions/AllMembers";
+import AddMemberComp from "../subscriptions/AddMember";
 import {Switch, Route,useRouteMatch} from 'react-router-dom';
-import NavTabs from "../components/NavTabs";
-import MoviesComp from "../components/Movies";
+import NavTabs from "../../components/NavTabs";
+import MoviesComp from "../../components/Movies";
 
 function SubscriptionsComp(props) {
   let { path, url} = useRouteMatch();

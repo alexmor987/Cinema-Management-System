@@ -1,9 +1,9 @@
 import { useEffect ,useState} from "react";
-import authSrv from '../services/auth';
-import AllUsersComp from "../pages/AllUsers";
-import AddUserComp from "../pages/AddUser";
+import authSrv from '../../services/auth';
+import AllUsersComp from "../usersManagement/AllUsers";
+import AddUserComp from "../usersManagement/AddUser";
 import {Switch, Route,useRouteMatch} from 'react-router-dom';
-import NavTabs from "../components/NavTabs";
+import NavTabs from "../../components/NavTabs";
   
   function UsersManagementComp(props) {
     let { path, url} = useRouteMatch();

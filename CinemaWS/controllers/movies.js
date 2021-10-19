@@ -7,7 +7,8 @@ const auth = require("../middleware/auth");
 router.get('/',auth,async function(req, res, next) {
   try {
      let allMovies=await  moviesBL.getAllMovies();
-     res.status(200).send({ movies: allMovies});
+     let allGenres=await  moviesBL.getGenersList();
+     res.status(200).send({ movies: allMovies,genres:allGenres});
     } catch (error) {
       res.status(404).send({ error: error.message});
     }

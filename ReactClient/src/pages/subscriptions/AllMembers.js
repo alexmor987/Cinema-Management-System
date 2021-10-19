@@ -1,6 +1,6 @@
 import { useEffect,useState } from "react";
-import utils from '../utils/utils';
-import CardMemberComp from '../components/CardMember';
+import utils from '../../utils/utils';
+import CardMemberComp from '../../components/CardMember';
 import Grid from '@mui/material/Grid';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Container from '@mui/material/Container';

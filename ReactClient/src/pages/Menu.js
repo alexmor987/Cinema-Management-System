@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import authSrv from '../services/auth';
 import Navbar from "../components/Navbar";
 import LoginComp from '../pages/Login';
-import MoviesComp from '../pages/Movies';
-import SubscriptionsComp from './Subscriptions';
-import UsersManagementComp from '../pages/UsersManagement';
+import MoviesComp from '../pages/movies/Movies';
+import SubscriptionsComp from '../pages/subscriptions/Subscriptions';
+import UsersManagementComp from '../pages/usersManagement/UsersManagement';
 import {Switch, Route } from "react-router-dom";
 import {useRouteMatch} from 'react-router-dom';
+import authSrv from '../services/auth';
 
 function MenuComp(props) {
   
