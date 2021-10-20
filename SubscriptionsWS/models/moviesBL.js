@@ -34,10 +34,10 @@ exports.getAllMovies=()=>{
    return new Promise((resolve,reject)=>
    {
      let movie=new Movie({
-      Name: obj.Name,
-      Genres:obj.Genres,
-      Image:obj.Image ,
-      Premiered:obj.Premiered
+      Name: obj.moviename,
+      Genres:obj.genres,
+      Image:obj.image ,
+      Premiered:obj.premiered
       })
       movie.save(err=>{
          if(err)reject(err);

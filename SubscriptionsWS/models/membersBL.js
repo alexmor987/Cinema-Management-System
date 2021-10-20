@@ -35,9 +35,9 @@ const Member=require('../models/membersModel');
    return new Promise((resolve,reject)=>
    {
      let member=new Member({
-         Name: obj.Name,
-         Email:obj.Email,
-         City:obj.City
+         Name: obj.name,
+         Email:obj.email,
+         City:obj.city
       })
       member.save(err=>{
          if(err)reject(err);

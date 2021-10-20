@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import { removeMovie,updateMovie } from "../redux/actions/moviesActions";
 import  utils  from "../utils/utils"
 import Modal from '../components/Modal/Modal';
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
 import OutlinedInput from '@mui/material/OutlinedInput';
