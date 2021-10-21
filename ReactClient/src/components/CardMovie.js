@@ -13,7 +13,7 @@ import  Button  from '@mui/material/Button';
 import { useDispatch } from "react-redux";
 import { removeMovie,updateMovie } from "../redux/actions/moviesActions";
 import  utils  from "../utils/utils"
-import Modal from '../components/Modal/Modal';
+import Modal from '../components/modal/Modal';
 import dayjs from 'dayjs';
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';

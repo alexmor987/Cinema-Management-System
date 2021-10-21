@@ -22,7 +22,6 @@ export default function CardMemberComp(props) {
         </Typography>
        {
        (props.data.Movies.length>0)&&<Typography paragraph>
-           
            Watched Movies:
            <MovieComp movies={props.data.Movies}/>
 

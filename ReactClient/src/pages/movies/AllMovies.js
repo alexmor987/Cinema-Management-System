@@ -28,7 +28,7 @@ const useStyles = makeStyles({
 function AllMoviesComp() {
 
   const history = useHistory();
-  const storeData = useSelector((state) => state);
+  const storeData = useSelector((state) => state.moviesReducer);
   const dispatch = useDispatch();
 
   const theme = createTheme();

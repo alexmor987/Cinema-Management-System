@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const RSA_PRIVATE_KEY = 'somekey';
+const RSA_PRIVATE_KEY = "somekey";
 
 const verifyToken = (req, res, next) => {
   const token =
