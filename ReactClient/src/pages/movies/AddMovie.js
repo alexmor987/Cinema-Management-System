@@ -36,7 +36,7 @@ function getStyles(genre, genres, theme) {
 function AddMovieComp() {
   const [movieData, setMovieData] = useState({premiered:"",moviename : "", image : "",genres:[]})
  
-  const storeData = useSelector((state) => state);
+  const storeData = useSelector((state) => state.moviesReducer);
   const theme = useTheme();
 
 

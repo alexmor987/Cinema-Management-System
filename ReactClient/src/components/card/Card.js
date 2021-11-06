@@ -31,8 +31,9 @@ export default function CardComponent(props) {
               {line}
             </Typography>
           ))}
+         { props.children}
         </CardContent>
-        <CardActions>{props.children}</CardActions>
+        <CardActions>{props.btn}</CardActions>
       </Card>
     </Grid>
   );

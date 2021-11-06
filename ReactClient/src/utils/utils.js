@@ -41,7 +41,11 @@ const addUser = (obj) => {
 const getUsers = () => {
   return axios.get("http://localhost:5000/api/users");
 };
+const deleteUserById = (id) => {
+  return axios.get("http://localhost:5000/api/users/deleteUser/" + id);
+};
 export default {
+  deleteUserById,
   addUser,
   addMember,
   addMovie,
